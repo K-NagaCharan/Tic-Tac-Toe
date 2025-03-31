@@ -104,6 +104,16 @@ function move(a,b){
         if(count>=5)
             result=check();
         count++;
+        let drawCheck=0;
+        for(let i=0;i<3;i++){
+            for(let j=0;j<3;j++){
+                if(arr[i][j]!==0)
+                    drawCheck++;
+            }
+        }
+        if(drawCheck===9 && result){
+            document.querySelector(".js-turn").innerHTML="Draw";
+        }
     }
     else if(mode===1 && result && arr[a][b]===0){
         let block=document.querySelector(`.js-${a}${b}`);
@@ -123,5 +133,16 @@ function move(a,b){
             }
         }
         result=check();
+        
+        let drawCheck=0;
+        for(let i=0;i<3;i++){
+            for(let j=0;j<3;j++){
+                if(arr[i][j]===0)
+                    drawCheck++;
+            }
+        }
+        if(drawCheck===9 && result){
+            document.querySelector(".js-turn").innerHTML="Draw";
+        }
     }
 }
