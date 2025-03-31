@@ -54,42 +54,42 @@ modeButton.forEach((button)=>{
 
 function check(){
     if(arr[0][0]===arr[1][1] && arr[1][1]===arr[2][2] && arr[0][0]!==0){
-        document.querySelector(".js-turn").innerHTML=(`${arr[0][0]} WON1`);
+        document.querySelector(".js-turn").innerHTML=(`${arr[0][0]} WON`);
         return false;
     }
     else if(arr[0][2]===arr[1][1] && arr[1][1]===arr[2][0] && arr[0][2]!==0){
-        document.querySelector(".js-turn").innerHTML=(`${arr[0][2]} WON2`);
+        document.querySelector(".js-turn").innerHTML=(`${arr[0][2]} WON`);
         return false;
     }
     else if(arr[0][0]===arr[1][0] && arr[1][0]===arr[2][0] && arr[0][0]!==0){
-        document.querySelector(".js-turn").innerHTML=(`${arr[0][0]} WON3`);
+        document.querySelector(".js-turn").innerHTML=(`${arr[0][0]} WON`);
          return false;
     }
     else if(arr[0][1]===arr[1][1] && arr[1][1]===arr[2][1] && arr[0][1]!==0){
-        document.querySelector(".js-turn").innerHTML=(`${arr[0][1]} WON4`);
+        document.querySelector(".js-turn").innerHTML=(`${arr[0][1]} WON`);
         return false;
     }
     else if(arr[0][2]===arr[1][2] && arr[1][2]===arr[2][2] && arr[0][2]!==0){
-        document.querySelector(".js-turn").innerHTML=(`${arr[0][2]} WON5`);
+        document.querySelector(".js-turn").innerHTML=(`${arr[0][2]} WON`);
         return false;
     }
     else if(arr[0][0]===arr[0][1] && arr[0][1]===arr[0][2] && arr[0][0]!==0){
-        document.querySelector(".js-turn").innerHTML=(`${arr[0][0]} WON6`);
+        document.querySelector(".js-turn").innerHTML=(`${arr[0][0]} WON`);
         return false;
     }
     else if(arr[1][0]===arr[1][1] && arr[1][1]===arr[1][2] && arr[1][0]!==0){
-        document.querySelector(".js-turn").innerHTML=(`${arr[1][0]} WON7`);
+        document.querySelector(".js-turn").innerHTML=(`${arr[1][0]} WON`);
         return false;
     }
     else if(arr[2][0]===arr[2][1] && arr[2][1]===arr[2][2] && arr[2][0]!==0){
-        document.querySelector(".js-turn").innerHTML=(`${arr[2][0]} WON8`);
+        document.querySelector(".js-turn").innerHTML=(`${arr[2][0]} WON`);
         return false;
     }
     return true;
 }
 
 function move(a,b){
-    if(mode===2 && result){
+    if(mode===2 && result && arr[a][b]===0){
         let block=document.querySelector(`.js-${a}${b}`);
         if((count%2)!==0){
             block.innerHTML="<p>X</p>";
@@ -104,5 +104,24 @@ function move(a,b){
         if(count>=5)
             result=check();
         count++;
+    }
+    else if(mode===1 && result && arr[a][b]===0){
+        let block=document.querySelector(`.js-${a}${b}`);
+        block.innerHTML="<p>X</p>";
+        arr[a][b]="X";
+        result=check();
+        if(result){
+            while(true){
+                let randomNumber1=Math.floor(Math.random() * 3);
+                let randomNumber2=Math.floor(Math.random() * 3);
+                if(arr[randomNumber1][randomNumber2]===0){
+                    let block2=document.querySelector(`.js-${randomNumber1}${randomNumber2}`);
+                    block2.innerHTML="<p>O</p>";
+                    arr[randomNumber1][randomNumber2]="O";
+                    break;
+                }
+            }
+        }
+        result=check();
     }
 }
