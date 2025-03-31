@@ -2,6 +2,21 @@
     padding: 0;
     margin: 0;
     box-sizing: border-box;
+    background-color: black;
+    color: white;
+}
+.mode{
+    text-align: center;
+    margin: 50px;
+}
+.modeButton{
+    margin: 50px;
+    padding:10px;
+    border-color: transparent;
+    color: black;
+    font-weight:bolder;
+    background-color: white;
+    border-radius: 20px;
 }
 .parent{
     width:300px;
