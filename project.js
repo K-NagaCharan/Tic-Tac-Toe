@@ -120,10 +120,21 @@ function move(a,b){
         block.innerHTML="<p>X</p>";
         arr[a][b]="X";
         result=check();
+        let drawCheck=0;
+        for(let i=0;i<3;i++){
+            for(let j=0;j<3;j++){
+                if(arr[i][j]!==0)
+                    drawCheck++;
+            }
+        }
+        if(drawCheck===9 && result){
+            document.querySelector(".js-turn").innerHTML="Draw";
+            return;
+        }
         if(result){
             while(true){
-                let randomNumber1=Math.floor(Math.random() * 3);
-                let randomNumber2=Math.floor(Math.random() * 3);
+                let randomNumber1=Math.floor(Math.random()*3);
+                let randomNumber2=Math.floor(Math.random()*3);
                 if(arr[randomNumber1][randomNumber2]===0){
                     let block2=document.querySelector(`.js-${randomNumber1}${randomNumber2}`);
                     block2.innerHTML="<p>O</p>";
@@ -133,11 +144,10 @@ function move(a,b){
             }
         }
         result=check();
-        
-        let drawCheck=0;
+        drawCheck=0;
         for(let i=0;i<3;i++){
             for(let j=0;j<3;j++){
-                if(arr[i][j]===0)
+                if(arr[i][j]!==0)
                     drawCheck++;
             }
         }
