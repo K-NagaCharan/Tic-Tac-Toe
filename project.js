@@ -31,6 +31,7 @@ modeButton.forEach((button)=>{
                 [0,0,0]
             ];
         }
+        document.querySelector('.js-type').innerHTML= mode===1 ? "One Player Mode" : "Two Player Mode";
         document.querySelector(".js-reset").innerHTML="TO RESET YOU CAN RESELECT YOUR GAME MODE"
         document.querySelector(".js-parent").innerHTML=
         `<div class="superChild">

@@ -8,10 +8,10 @@
 }
 .mode{
     text-align: center;
-    margin: 25px;
+    margin: 10px;
 }
 .modeButton{
-    margin: 50px;
+    margin: 30px;
     padding:10px;
     border-color: transparent;
     color: black;
@@ -51,5 +51,6 @@
     font-size: 30px;
 }
 .turn{
-    font-size: 30px;
+    font-size: 50px;
+    color: aqua;
 }
